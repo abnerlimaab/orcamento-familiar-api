@@ -1,7 +1,9 @@
+import { Receita } from "src/Models/Receita";
 export declare class ReceitasController {
-    listarReceitas(): string;
-    detalharReceita(param: any): string;
-    cadastrarReceita(receita: any): string;
-    atualizarReceita(param: any, receita: any): string;
+    receitas: Receita[];
+    listarReceitas(): Receita[];
+    detalharReceita(param: any): Receita;
+    cadastrarReceita(receita: Receita): Receita;
+    atualizarReceita(param: any, receita: Receita): Receita;
     excluirReceita(param: any): string;
 }

@@ -14,20 +14,30 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReceitasController = void 0;
 const common_1 = require("@nestjs/common");
+const Receita_1 = require("../Models/Receita");
 let ReceitasController = class ReceitasController {
+    constructor() {
+        this.receitas = [
+            new Receita_1.Receita("primeiro", 10, new Date(2022, 0, 20)),
+            new Receita_1.Receita("segundo", 20, new Date(2022, 0, 20)),
+            new Receita_1.Receita("terceiro", 30, new Date(2022, 0, 20))
+        ];
+    }
     listarReceitas() {
-        return 'Listar receitas';
+        return this.receitas;
     }
     detalharReceita(param) {
-        return `Lista receita id: ${param.id}`;
+        return this.receitas[param.id - 1];
     }
     cadastrarReceita(receita) {
-        console.log(receita);
-        return 'Receita criada';
+        receita.id = this.receitas.length + 1;
+        this.receitas.push(new Receita_1.Receita(receita.descricao, receita.valor, receita.data));
+        console.log(`Receita de id: ${receita.id} cadastrada`);
+        return receita;
     }
     atualizarReceita(param, receita) {
         console.log(receita);
-        return `Atualizado receita id: ${param.id}`;
+        return receita;
     }
     excluirReceita(param) {
         return `Excluído receita id: ${param.id}`;
@@ -37,29 +47,29 @@ __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
+    __metadata("design:returntype", Array)
 ], ReceitasController.prototype, "listarReceitas", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
+    __metadata("design:returntype", Receita_1.Receita)
 ], ReceitasController.prototype, "detalharReceita", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
+    __metadata("design:paramtypes", [Receita_1.Receita]),
+    __metadata("design:returntype", Receita_1.Receita)
 ], ReceitasController.prototype, "cadastrarReceita", null);
 __decorate([
     (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
+    __metadata("design:paramtypes", [Object, Receita_1.Receita]),
+    __metadata("design:returntype", Receita_1.Receita)
 ], ReceitasController.prototype, "atualizarReceita", null);
 __decorate([
     (0, common_1.Delete)(':id'),
