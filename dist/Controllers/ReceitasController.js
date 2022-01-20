@@ -13,34 +13,27 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReceitasController = void 0;
+const TransacoesService_1 = require("./../Services/TransacoesService");
 const common_1 = require("@nestjs/common");
 const Receita_1 = require("../Models/Receita");
 let ReceitasController = class ReceitasController {
-    constructor() {
-        this.receitas = [
-            new Receita_1.Receita("primeiro", 10, new Date(2022, 0, 20)),
-            new Receita_1.Receita("segundo", 20, new Date(2022, 0, 20)),
-            new Receita_1.Receita("terceiro", 30, new Date(2022, 0, 20))
-        ];
+    constructor(transacoesService) {
+        this.transacoesService = transacoesService;
     }
-    listarReceitas() {
-        return this.receitas;
+    listar() {
+        return this.transacoesService.listar();
     }
-    detalharReceita(param) {
-        return this.receitas[param.id - 1];
+    detalhar(param) {
+        return this.transacoesService.detalhar(param.id);
     }
-    cadastrarReceita(receita) {
-        receita.id = this.receitas.length + 1;
-        this.receitas.push(new Receita_1.Receita(receita.descricao, receita.valor, receita.data));
-        console.log(`Receita de id: ${receita.id} cadastrada`);
-        return receita;
+    cadastrar(receita) {
+        return this.transacoesService.cadastrar(receita);
     }
-    atualizarReceita(param, receita) {
-        console.log(receita);
-        return receita;
+    atualizar(param, receita) {
+        return this.transacoesService.atualizar(param.id, receita);
     }
-    excluirReceita(param) {
-        return `Excluído receita id: ${param.id}`;
+    excluir(param) {
+        this.transacoesService.excluir(param.id);
     }
 };
 __decorate([
@@ -48,21 +41,21 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Array)
-], ReceitasController.prototype, "listarReceitas", null);
+], ReceitasController.prototype, "listar", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Receita_1.Receita)
-], ReceitasController.prototype, "detalharReceita", null);
+], ReceitasController.prototype, "detalhar", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Receita_1.Receita]),
     __metadata("design:returntype", Receita_1.Receita)
-], ReceitasController.prototype, "cadastrarReceita", null);
+], ReceitasController.prototype, "cadastrar", null);
 __decorate([
     (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)()),
@@ -70,16 +63,17 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Receita_1.Receita]),
     __metadata("design:returntype", Receita_1.Receita)
-], ReceitasController.prototype, "atualizarReceita", null);
+], ReceitasController.prototype, "atualizar", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
-], ReceitasController.prototype, "excluirReceita", null);
+    __metadata("design:returntype", void 0)
+], ReceitasController.prototype, "excluir", null);
 ReceitasController = __decorate([
-    (0, common_1.Controller)('receitas')
+    (0, common_1.Controller)('receitas'),
+    __metadata("design:paramtypes", [TransacoesService_1.TransacoesService])
 ], ReceitasController);
 exports.ReceitasController = ReceitasController;
 //# sourceMappingURL=ReceitasController.js.map

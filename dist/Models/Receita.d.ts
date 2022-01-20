@@ -1,7 +1,3 @@
-export declare class Receita {
-    id: number;
-    descricao: string;
-    valor: number;
-    data: Date;
-    constructor(descricao: string, valor: number, data: Date);
+import { Transacao } from './Transacao';
+export declare class Receita extends Transacao {
 }

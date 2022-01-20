@@ -1,9 +1,11 @@
+import { TransacoesService } from './../Services/TransacoesService';
 import { Receita } from "src/Models/Receita";
 export declare class ReceitasController {
-    receitas: Receita[];
-    listarReceitas(): Receita[];
-    detalharReceita(param: any): Receita;
-    cadastrarReceita(receita: Receita): Receita;
-    atualizarReceita(param: any, receita: Receita): Receita;
-    excluirReceita(param: any): string;
+    private transacoesService;
+    constructor(transacoesService: TransacoesService);
+    listar(): Receita[];
+    detalhar(param: any): Receita;
+    cadastrar(receita: Receita): Receita;
+    atualizar(param: any, receita: Receita): Receita;
+    excluir(param: any): void;
 }
