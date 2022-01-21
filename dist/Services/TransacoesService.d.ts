@@ -1,9 +1,9 @@
-import { Receita } from "src/Models/Receita";
+import { Transacao } from './../Models/Transacao';
 export declare class TransacoesService {
-    receitas: Receita[];
-    listar(): Receita[];
-    detalhar(id: number): Receita;
-    cadastrar(receita: Receita): Receita;
-    atualizar(id: number, receita: Receita): Receita;
+    transacoes: Transacao[];
+    listar(): Transacao[];
+    detalhar(id: number): Transacao;
+    cadastrar(transacao: Transacao): Transacao;
+    atualizar(id: number, transacao: Transacao): Transacao;
     excluir(id: number): void;
 }

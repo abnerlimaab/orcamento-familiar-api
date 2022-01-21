@@ -11,27 +11,27 @@ const common_1 = require("@nestjs/common");
 const Receita_1 = require("../Models/Receita");
 let TransacoesService = class TransacoesService {
     constructor() {
-        this.receitas = [
+        this.transacoes = [
             new Receita_1.Receita("primeiro", 10, new Date(2022, 0, 20)),
             new Receita_1.Receita("segundo", 20, new Date(2022, 0, 20)),
             new Receita_1.Receita("terceiro", 30, new Date(2022, 0, 20))
         ];
     }
     listar() {
-        return this.receitas;
+        return this.transacoes;
     }
     detalhar(id) {
-        return this.receitas[id - 1];
+        return this.transacoes[id - 1];
     }
-    cadastrar(receita) {
-        receita.id = this.receitas.length + 1;
-        this.receitas.push(new Receita_1.Receita(receita.descricao, receita.valor, receita.data));
-        console.log(`Receita de id: ${receita.id} cadastrada`);
-        return receita;
+    cadastrar(transacao) {
+        transacao.id = this.transacoes.length + 1;
+        this.transacoes.push(new Receita_1.Receita(transacao.descricao, transacao.valor, transacao.data));
+        console.log(`Receita de id: ${transacao.id} cadastrada`);
+        return transacao;
     }
-    atualizar(id, receita) {
-        console.log(receita);
-        return receita;
+    atualizar(id, transacao) {
+        console.log(transacao);
+        return transacao;
     }
     excluir(id) {
         console.log(`Excluído receita id: ${id}`);

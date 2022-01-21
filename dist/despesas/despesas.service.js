@@ -6,20 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.DespesasService = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const despesas_module_1 = require("./despesas/despesas.module");
-const receitas_module_1 = require("./receitas/receitas.module");
-let AppModule = class AppModule {
+let DespesasService = class DespesasService {
+    create(createDespesaDto) {
+        return 'This action adds a new despesa';
+    }
+    findAll() {
+        return `This action returns all despesas`;
+    }
+    findOne(id) {
+        return `This action returns a #${id} despesa`;
+    }
+    update(id, updateDespesaDto) {
+        return `This action updates a #${id} despesa`;
+    }
+    remove(id) {
+        return `This action removes a #${id} despesa`;
+    }
 };
-AppModule = __decorate([
-    (0, common_1.Module)({
-        imports: [despesas_module_1.DespesasModule, receitas_module_1.ReceitasModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
-    })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+DespesasService = __decorate([
+    (0, common_1.Injectable)()
+], DespesasService);
+exports.DespesasService = DespesasService;
+//# sourceMappingURL=despesas.service.js.map

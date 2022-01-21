@@ -1,4 +1,4 @@
-export declare class Transacao {
+export declare abstract class Transacao {
     id: number;
     descricao: string;
     valor: number;
