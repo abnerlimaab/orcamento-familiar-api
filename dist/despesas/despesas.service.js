@@ -9,6 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DespesasService = void 0;
 const common_1 = require("@nestjs/common");
 let DespesasService = class DespesasService {
+    constructor() {
+        this.despesas = [];
+    }
     create(createDespesaDto) {
         return 'This action adds a new despesa';
     }

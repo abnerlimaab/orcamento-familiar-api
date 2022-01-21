@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDespesaDto } from './dto/create-despesa.dto';
 import { UpdateDespesaDto } from './dto/update-despesa.dto';
+import { Despesa } from './entities/despesa.entity';
 
 @Injectable()
 export class DespesasService {
+  private readonly despesas: Despesa[] = [];
+
   create(createDespesaDto: CreateDespesaDto) {
     return 'This action adds a new despesa';
   }
