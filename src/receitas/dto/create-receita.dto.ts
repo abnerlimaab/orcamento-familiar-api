@@ -1,1 +1,5 @@
-export class CreateReceitaDto {}
+export class CreateReceitaDto {
+    descricao: string;
+    valor: number;
+    data: Date;    
+}
