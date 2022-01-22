@@ -9,4 +9,5 @@ export declare class DespesasService {
     findOne(id: number): Promise<Despesa>;
     update(id: number, updateDespesaDto: UpdateDespesaDto): Promise<Despesa>;
     remove(id: number): Promise<void>;
+    isDuplicated(despesa: CreateDespesaDto | UpdateDespesaDto): Promise<boolean>;
 }

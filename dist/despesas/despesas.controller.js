@@ -30,16 +30,36 @@ let DespesasController = class DespesasController {
         }
     }
     async findAll() {
-        return this.despesasService.findAll();
+        try {
+            return this.despesasService.findAll();
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
     async findOne(id) {
-        return this.despesasService.findOne(+id);
+        try {
+            return await this.despesasService.findOne(+id);
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
     async update(id, updateDespesaDto) {
-        return this.despesasService.update(+id, updateDespesaDto);
+        try {
+            return await this.despesasService.update(+id, updateDespesaDto);
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
     async remove(id) {
-        return this.despesasService.remove(+id);
+        try {
+            return await this.despesasService.remove(+id);
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
 };
 __decorate([

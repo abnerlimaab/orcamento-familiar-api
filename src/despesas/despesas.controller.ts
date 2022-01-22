@@ -19,21 +19,41 @@ export class DespesasController {
 
   @Get()
   async findAll() {
-    return this.despesasService.findAll();
+    try {
+      return this.despesasService.findAll();
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return this.despesasService.findOne(+id);
+    try {
+      return await this.despesasService.findOne(+id);
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 
   @Put(':id')
   async update(@Param('id') id: string, @Body() updateDespesaDto: UpdateDespesaDto) {
-    return this.despesasService.update(+id, updateDespesaDto);
+    try {
+      return await this.despesasService.update(+id, updateDespesaDto);
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    return this.despesasService.remove(+id);
+    try {
+      return await this.despesasService.remove(+id);
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 }
