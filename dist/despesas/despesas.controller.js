@@ -22,7 +22,12 @@ let DespesasController = class DespesasController {
         this.despesasService = despesasService;
     }
     async create(createDespesaDto) {
-        return this.despesasService.create(createDespesaDto);
+        try {
+            await this.despesasService.create(createDespesaDto);
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
     async findAll() {
         return this.despesasService.findAll();

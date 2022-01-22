@@ -7,13 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DespesasModule = void 0;
+const sequelize_1 = require("@nestjs/sequelize");
 const common_1 = require("@nestjs/common");
 const despesas_service_1 = require("./despesas.service");
 const despesas_controller_1 = require("./despesas.controller");
+const despesa_model_1 = require("./despesa.model");
 let DespesasModule = class DespesasModule {
 };
 DespesasModule = __decorate([
     (0, common_1.Module)({
+        imports: [sequelize_1.SequelizeModule.forFeature([despesa_model_1.Despesa])],
         controllers: [despesas_controller_1.DespesasController],
         providers: [despesas_service_1.DespesasService]
     })

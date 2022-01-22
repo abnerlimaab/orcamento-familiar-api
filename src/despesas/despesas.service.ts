@@ -1,35 +1,42 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
+import { Despesa } from './despesa.model';
 import { CreateDespesaDto } from './dto/create-despesa.dto';
 import { UpdateDespesaDto } from './dto/update-despesa.dto';
-import { Despesa } from './entities/despesa.entity';
 
 @Injectable()
 export class DespesasService {
-  private readonly despesas: Despesa[] = [];
+  constructor(
+    @InjectModel(Despesa) private despesaModel: typeof Despesa
+  ) {}
 
-  create(createDespesaDto: CreateDespesaDto) {
-    console.log("Nova despesa cadastrada");
-    this.despesas.push(createDespesaDto);
+  async create(createDespesaDto: CreateDespesaDto) {
+    await this.despesaModel.create(createDespesaDto);
   }
 
-  findAll() : Despesa[] {
-    console.log(`Retornado lista de despesas`);
-    return this.despesas;
+  async findAll() : Promise<Despesa[]> {
+    return this.despesaModel.findAll();
   }
 
-  findOne(id: number) : Despesa {
-    console.log(`Retornado despesa de id ${id}`);
-    return this.despesas[id];
+  async findOne(id: number) : Promise<Despesa> {
+    return this.despesaModel.findOne({
+      where: {
+        id: id
+      }
+    })
   }
 
-  update(id: number, updateDespesaDto: UpdateDespesaDto) : Despesa {
-    this.despesas[id] = updateDespesaDto;
-    console.log(`Atualizado despesa de id ${id}`);
-    return this.despesas[id];
+  async update(id: number, updateDespesaDto: UpdateDespesaDto) : Promise<Despesa> {
+    await this.despesaModel.update(updateDespesaDto, {
+      where: {
+        id: id
+      }
+    })
+    return this.findOne(id);
   }
 
-  remove(id: number) {
-    this.despesas[id] = undefined;
-    console.log(`Excluido despesa de id ${id}`);
+  async remove(id: number) {
+    const despesa : Despesa = await this.findOne(id);
+    despesa.destroy();
   }
 }

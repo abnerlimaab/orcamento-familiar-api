@@ -5,37 +5,51 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DespesasService = void 0;
 const common_1 = require("@nestjs/common");
+const sequelize_1 = require("@nestjs/sequelize");
+const despesa_model_1 = require("./despesa.model");
 let DespesasService = class DespesasService {
-    constructor() {
-        this.despesas = [];
+    constructor(despesaModel) {
+        this.despesaModel = despesaModel;
     }
-    create(createDespesaDto) {
-        console.log("Nova despesa cadastrada");
-        this.despesas.push(createDespesaDto);
+    async create(createDespesaDto) {
+        await this.despesaModel.create(createDespesaDto);
     }
-    findAll() {
-        console.log(`Retornado lista de despesas`);
-        return this.despesas;
+    async findAll() {
+        return this.despesaModel.findAll();
     }
-    findOne(id) {
-        console.log(`Retornado despesa de id ${id}`);
-        return this.despesas[id];
+    async findOne(id) {
+        return this.despesaModel.findOne({
+            where: {
+                id: id
+            }
+        });
     }
-    update(id, updateDespesaDto) {
-        this.despesas[id] = updateDespesaDto;
-        console.log(`Atualizado despesa de id ${id}`);
-        return this.despesas[id];
+    async update(id, updateDespesaDto) {
+        await this.despesaModel.update(updateDespesaDto, {
+            where: {
+                id: id
+            }
+        });
+        return this.findOne(id);
     }
-    remove(id) {
-        this.despesas[id] = undefined;
-        console.log(`Excluido despesa de id ${id}`);
+    async remove(id) {
+        const despesa = await this.findOne(id);
+        despesa.destroy();
     }
 };
 DespesasService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __param(0, (0, sequelize_1.InjectModel)(despesa_model_1.Despesa)),
+    __metadata("design:paramtypes", [Object])
 ], DespesasService);
 exports.DespesasService = DespesasService;
 //# sourceMappingURL=despesas.service.js.map

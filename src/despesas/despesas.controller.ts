@@ -9,7 +9,12 @@ export class DespesasController {
 
   @Post()
   async create(@Body() createDespesaDto: CreateDespesaDto) {
-    return this.despesasService.create(createDespesaDto);
+    try {
+      await this.despesasService.create(createDespesaDto);
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 
   @Get()
