@@ -21,19 +21,19 @@ let DespesasController = class DespesasController {
     constructor(despesasService) {
         this.despesasService = despesasService;
     }
-    create(createDespesaDto) {
+    async create(createDespesaDto) {
         return this.despesasService.create(createDespesaDto);
     }
-    findAll() {
+    async findAll() {
         return this.despesasService.findAll();
     }
-    findOne(id) {
+    async findOne(id) {
         return this.despesasService.findOne(+id);
     }
-    update(id, updateDespesaDto) {
+    async update(id, updateDespesaDto) {
         return this.despesasService.update(+id, updateDespesaDto);
     }
-    remove(id) {
+    async remove(id) {
         return this.despesasService.remove(+id);
     }
 };
@@ -42,35 +42,35 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_despesa_dto_1.CreateDespesaDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DespesasController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DespesasController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DespesasController.prototype, "findOne", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
+    (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_despesa_dto_1.UpdateDespesaDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DespesasController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DespesasController.prototype, "remove", null);
 DespesasController = __decorate([
     (0, common_1.Controller)('despesas'),

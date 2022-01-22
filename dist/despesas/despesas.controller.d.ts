@@ -4,9 +4,9 @@ import { UpdateDespesaDto } from './dto/update-despesa.dto';
 export declare class DespesasController {
     private readonly despesasService;
     constructor(despesasService: DespesasService);
-    create(createDespesaDto: CreateDespesaDto): string;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateDespesaDto: UpdateDespesaDto): string;
-    remove(id: string): string;
+    create(createDespesaDto: CreateDespesaDto): Promise<void>;
+    findAll(): Promise<import("./entities/despesa.entity").Despesa[]>;
+    findOne(id: string): Promise<import("./entities/despesa.entity").Despesa>;
+    update(id: string, updateDespesaDto: UpdateDespesaDto): Promise<import("./entities/despesa.entity").Despesa>;
+    remove(id: string): Promise<void>;
 }

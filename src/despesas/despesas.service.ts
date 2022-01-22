@@ -8,22 +8,28 @@ export class DespesasService {
   private readonly despesas: Despesa[] = [];
 
   create(createDespesaDto: CreateDespesaDto) {
-    return 'This action adds a new despesa';
+    console.log("Nova despesa cadastrada");
+    this.despesas.push(createDespesaDto);
   }
 
-  findAll() {
-    return `This action returns all despesas`;
+  findAll() : Despesa[] {
+    console.log(`Retornado lista de despesas`);
+    return this.despesas;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} despesa`;
+  findOne(id: number) : Despesa {
+    console.log(`Retornado despesa de id ${id}`);
+    return this.despesas[id];
   }
 
-  update(id: number, updateDespesaDto: UpdateDespesaDto) {
-    return `This action updates a #${id} despesa`;
+  update(id: number, updateDespesaDto: UpdateDespesaDto) : Despesa {
+    this.despesas[id] = updateDespesaDto;
+    console.log(`Atualizado despesa de id ${id}`);
+    return this.despesas[id];
   }
 
   remove(id: number) {
-    return `This action removes a #${id} despesa`;
+    this.despesas[id] = undefined;
+    console.log(`Excluido despesa de id ${id}`);
   }
 }

@@ -13,19 +13,25 @@ let DespesasService = class DespesasService {
         this.despesas = [];
     }
     create(createDespesaDto) {
-        return 'This action adds a new despesa';
+        console.log("Nova despesa cadastrada");
+        this.despesas.push(createDespesaDto);
     }
     findAll() {
-        return `This action returns all despesas`;
+        console.log(`Retornado lista de despesas`);
+        return this.despesas;
     }
     findOne(id) {
-        return `This action returns a #${id} despesa`;
+        console.log(`Retornado despesa de id ${id}`);
+        return this.despesas[id];
     }
     update(id, updateDespesaDto) {
-        return `This action updates a #${id} despesa`;
+        this.despesas[id] = updateDespesaDto;
+        console.log(`Atualizado despesa de id ${id}`);
+        return this.despesas[id];
     }
     remove(id) {
-        return `This action removes a #${id} despesa`;
+        this.despesas[id] = undefined;
+        console.log(`Excluido despesa de id ${id}`);
     }
 };
 DespesasService = __decorate([
