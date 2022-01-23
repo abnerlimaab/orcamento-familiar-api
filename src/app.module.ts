@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Despesa } from './despesas/despesa.model';
 import { DespesasModule } from './despesas/despesas.module';
+import { Receita } from './receitas/receita.model';
 import { ReceitasModule } from './receitas/receitas.module';
 
 @Module({
@@ -17,7 +18,7 @@ import { ReceitasModule } from './receitas/receitas.module';
       username: 'root',
       password: 'admin',
       database: 'orcamento_familiar',
-      models: [Despesa],
+      models: [Despesa, Receita],
     })
   ],
   controllers: [AppController],
