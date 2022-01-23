@@ -35,15 +35,14 @@ export class ReceitasService {
   }
 
   async update(id: number, updateReceitaDto: UpdateReceitaDto) : Promise<Receita> {
-    if (await !this.isDuplicated(updateReceitaDto)) {
-      await this.receitaModel.update(updateReceitaDto	,
-        {
-          where: {
-            id: id
-          }
+    if (await this.isDuplicated(updateReceitaDto))  return;
+    await this.receitaModel.update(updateReceitaDto	,
+      {
+        where: {
+          id: id
         }
-      );
-    }
+      }
+    );
     return this.findOne(id);
   }
 

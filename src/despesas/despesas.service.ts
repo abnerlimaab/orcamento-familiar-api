@@ -33,7 +33,7 @@ export class DespesasService {
   }
 
   async update(id: number, updateDespesaDto: UpdateDespesaDto) : Promise<Despesa> {
-    if (!this.isDuplicated(updateDespesaDto)) {
+    if (this.isDuplicated(updateDespesaDto)) {
       await this.despesaModel.update(updateDespesaDto, {
         where: {
           id: id

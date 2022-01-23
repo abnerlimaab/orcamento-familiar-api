@@ -40,13 +40,13 @@ let ReceitasService = class ReceitasService {
         });
     }
     async update(id, updateReceitaDto) {
-        if (await !this.isDuplicated(updateReceitaDto)) {
-            await this.receitaModel.update(updateReceitaDto, {
-                where: {
-                    id: id
-                }
-            });
-        }
+        if (await this.isDuplicated(updateReceitaDto))
+            return;
+        await this.receitaModel.update(updateReceitaDto, {
+            where: {
+                id: id
+            }
+        });
         return this.findOne(id);
     }
     async remove(id) {

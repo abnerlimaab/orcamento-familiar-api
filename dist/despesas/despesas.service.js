@@ -40,7 +40,7 @@ let DespesasService = class DespesasService {
         });
     }
     async update(id, updateDespesaDto) {
-        if (!this.isDuplicated(updateDespesaDto)) {
+        if (this.isDuplicated(updateDespesaDto)) {
             await this.despesaModel.update(updateDespesaDto, {
                 where: {
                     id: id
