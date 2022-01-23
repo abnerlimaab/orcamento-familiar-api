@@ -66,5 +66,6 @@ export class DespesasService {
       console.log("Tentativa de cadastro duplicado");
       return true;
     }
+    return false;
   }
 }
