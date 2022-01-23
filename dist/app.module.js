@@ -13,6 +13,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const despesa_model_1 = require("./despesas/despesa.model");
 const despesas_module_1 = require("./despesas/despesas.module");
+const receita_model_1 = require("./receitas/receita.model");
 const receitas_module_1 = require("./receitas/receitas.module");
 let AppModule = class AppModule {
 };
@@ -28,7 +29,7 @@ AppModule = __decorate([
                 username: 'root',
                 password: 'admin',
                 database: 'orcamento_familiar',
-                models: [despesa_model_1.Despesa],
+                models: [despesa_model_1.Despesa, receita_model_1.Receita],
             })
         ],
         controllers: [app_controller_1.AppController],

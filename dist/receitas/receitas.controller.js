@@ -21,20 +21,45 @@ let ReceitasController = class ReceitasController {
     constructor(receitasService) {
         this.receitasService = receitasService;
     }
-    create(createReceitaDto) {
-        return this.receitasService.create(createReceitaDto);
+    async create(createReceitaDto) {
+        try {
+            await this.receitasService.create(createReceitaDto);
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
-    findAll() {
-        return this.receitasService.findAll();
+    async findAll() {
+        try {
+            return await this.receitasService.findAll();
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
-    findOne(id) {
-        return this.receitasService.findOne(+id);
+    async findOne(id) {
+        try {
+            return await this.receitasService.findOne(+id);
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
-    update(id, updateReceitaDto) {
-        return this.receitasService.update(+id, updateReceitaDto);
+    async update(id, updateReceitaDto) {
+        try {
+            return await this.receitasService.update(+id, updateReceitaDto);
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
-    remove(id) {
-        return this.receitasService.remove(+id);
+    async remove(id) {
+        try {
+            return this.receitasService.remove(+id);
+        }
+        catch (erro) {
+            console.log(erro);
+        }
     }
 };
 __decorate([
@@ -42,20 +67,20 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_receita_dto_1.CreateReceitaDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ReceitasController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ReceitasController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ReceitasController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Put)(':id'),
@@ -63,14 +88,14 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_receita_dto_1.UpdateReceitaDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ReceitasController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ReceitasController.prototype, "remove", null);
 ReceitasController = __decorate([
     (0, common_1.Controller)('receitas'),

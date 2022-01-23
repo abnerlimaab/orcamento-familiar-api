@@ -10,7 +10,7 @@ export class ReceitasController {
   @Post()
   async create(@Body() createReceitaDto: CreateReceitaDto) {
     try {
-      return await this.receitasService.create(createReceitaDto);
+      await this.receitasService.create(createReceitaDto);
     }
     catch (erro) {
       console.log(erro);

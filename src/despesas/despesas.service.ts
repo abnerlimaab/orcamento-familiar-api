@@ -52,7 +52,7 @@ export class DespesasService {
   }
 
   async isDuplicated(despesa : CreateDespesaDto | UpdateDespesaDto) : Promise<boolean> {
-    const mes : number = new Date(despesa.data).getMonth() + 1;
+    const mes : number = new Date(despesa.data).getUTCMonth() + 1;
     const despesaEncontrada = await this.despesaModel.findOne(
       {
         where: 
@@ -65,7 +65,8 @@ export class DespesasService {
     if (despesaEncontrada) {
       console.log("Tentativa de cadastro duplicado");
       return true;
-    }
-    return false;
+    } else {
+      return false;
+    }    
   }
 }

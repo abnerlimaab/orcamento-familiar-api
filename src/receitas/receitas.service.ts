@@ -15,7 +15,7 @@ export class ReceitasService {
     await this.receitaModel.create(createReceitaDto);
   }
 
-  async findAll() {
+  async findAll() : Promise<Receita[]> {
     return await this.receitaModel.findAll(
       {
         attributes: ['descricao', 'valor', 'data']
@@ -23,7 +23,7 @@ export class ReceitasService {
     );
   }
 
-  async findOne(id: number) {
+  async findOne(id: number) : Promise<Receita> {
     return await this.receitaModel.findOne(
       {
         attributes: ['descricao', 'valor', 'data'],
@@ -34,7 +34,7 @@ export class ReceitasService {
     );
   }
 
-  async update(id: number, updateReceitaDto: UpdateReceitaDto) {
+  async update(id: number, updateReceitaDto: UpdateReceitaDto) : Promise<Receita> {
     if (await !this.isDuplicated(updateReceitaDto)) {
       await this.receitaModel.update(updateReceitaDto	,
         {
@@ -58,7 +58,7 @@ export class ReceitasService {
   }
 
   async isDuplicated(receita : CreateReceitaDto | UpdateReceitaDto) : Promise<boolean> {
-    const mes = new Date(receita.data).getMonth() + 1;
+    const mes : number = new Date(receita.data).getUTCMonth() + 1;
     const receitaEncontrada = await this.receitaModel.findOne(
       {
         where: {
@@ -70,7 +70,8 @@ export class ReceitasService {
     if (receitaEncontrada) {
       console.log('Tentativa de cadastro duplicado');
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 }
