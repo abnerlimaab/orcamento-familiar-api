@@ -8,27 +8,52 @@ export class ReceitasController {
   constructor(private readonly receitasService: ReceitasService) {}
 
   @Post()
-  create(@Body() createReceitaDto: CreateReceitaDto) {
-    return this.receitasService.create(createReceitaDto);
+  async create(@Body() createReceitaDto: CreateReceitaDto) {
+    try {
+      return await this.receitasService.create(createReceitaDto);
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 
   @Get()
-  findAll() {
-    return this.receitasService.findAll();
+  async findAll() {
+    try {
+      return await this.receitasService.findAll();
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.receitasService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    try {
+      return await this.receitasService.findOne(+id);
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateReceitaDto: UpdateReceitaDto) {
-    return this.receitasService.update(+id, updateReceitaDto);
+  async update(@Param('id') id: string, @Body() updateReceitaDto: UpdateReceitaDto) {
+    try {
+      return await this.receitasService.update(+id, updateReceitaDto);
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.receitasService.remove(+id);
+  async remove(@Param('id') id: string) {
+    try {
+      return this.receitasService.remove(+id);
+    }
+    catch (erro) {
+      console.log(erro);
+    }
   }
 }
