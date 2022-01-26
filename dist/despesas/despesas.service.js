@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DespesasService = void 0;
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
-const despesa_model_1 = require("./despesa.model");
+const despesa_entity_1 = require("./entities/despesa.entity");
 const Op = require('sequelize');
 let DespesasService = class DespesasService {
     constructor(despesaModel) {
@@ -75,7 +75,7 @@ let DespesasService = class DespesasService {
 };
 DespesasService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, sequelize_1.InjectModel)(despesa_model_1.Despesa)),
+    __param(0, (0, sequelize_1.InjectModel)(despesa_entity_1.Despesa)),
     __metadata("design:paramtypes", [Object])
 ], DespesasService);
 exports.DespesasService = DespesasService;

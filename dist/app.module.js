@@ -11,10 +11,10 @@ const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const despesa_model_1 = require("./despesas/despesa.model");
 const despesas_module_1 = require("./despesas/despesas.module");
 const receita_model_1 = require("./receitas/receita.model");
 const receitas_module_1 = require("./receitas/receitas.module");
+const despesa_entity_1 = require("./despesas/entities/despesa.entity");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -29,7 +29,7 @@ AppModule = __decorate([
                 username: 'root',
                 password: 'admin',
                 database: 'orcamento_familiar',
-                models: [despesa_model_1.Despesa, receita_model_1.Receita],
+                models: [despesa_entity_1.Despesa, receita_model_1.Receita],
             })
         ],
         controllers: [app_controller_1.AppController],

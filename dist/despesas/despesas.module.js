@@ -11,12 +11,12 @@ const sequelize_1 = require("@nestjs/sequelize");
 const common_1 = require("@nestjs/common");
 const despesas_service_1 = require("./despesas.service");
 const despesas_controller_1 = require("./despesas.controller");
-const despesa_model_1 = require("./despesa.model");
+const despesa_entity_1 = require("./entities/despesa.entity");
 let DespesasModule = class DespesasModule {
 };
 DespesasModule = __decorate([
     (0, common_1.Module)({
-        imports: [sequelize_1.SequelizeModule.forFeature([despesa_model_1.Despesa])],
+        imports: [sequelize_1.SequelizeModule.forFeature([despesa_entity_1.Despesa])],
         controllers: [despesas_controller_1.DespesasController],
         providers: [despesas_service_1.DespesasService]
     })

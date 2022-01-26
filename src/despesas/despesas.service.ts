@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Despesa } from './despesa.model';
 import { CreateDespesaDto } from './dto/create-despesa.dto';
 import { UpdateDespesaDto } from './dto/update-despesa.dto';
+import { Despesa } from './entities/despesa.entity';
 
 const Op = require('sequelize');
 

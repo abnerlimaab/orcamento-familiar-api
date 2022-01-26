@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Despesa } from './despesas/despesa.model';
 import { DespesasModule } from './despesas/despesas.module';
 import { Receita } from './receitas/receita.model';
 import { ReceitasModule } from './receitas/receitas.module';
+import { Despesa } from './despesas/entities/despesa.entity';
 
 @Module({
   imports: [

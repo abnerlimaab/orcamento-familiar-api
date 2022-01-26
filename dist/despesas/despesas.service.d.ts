@@ -1,6 +1,6 @@
-import { Despesa } from './despesa.model';
 import { CreateDespesaDto } from './dto/create-despesa.dto';
 import { UpdateDespesaDto } from './dto/update-despesa.dto';
+import { Despesa } from './entities/despesa.entity';
 export declare class DespesasService {
     private despesaModel;
     constructor(despesaModel: typeof Despesa);
